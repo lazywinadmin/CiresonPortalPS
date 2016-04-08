@@ -1,4 +1,4 @@
-function Get-CiresonPortalSupportGroupMember
+function Get-CiresonPortalUserSupportGroupMember
 {
 <#
 Returns a list of members of a support group enumeration.
