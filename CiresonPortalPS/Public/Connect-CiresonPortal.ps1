@@ -1,5 +1,9 @@
 function Connect-CiresonPortal
 {
+	<#
+	.EXAMPLE
+		Connect-CiresonPortal -URL "http://CiresonPortal/api" -Credential $cred
+	#>
 PARAM(
     [Alias('RunAs')]
 	[System.Management.Automation.Credential()]
