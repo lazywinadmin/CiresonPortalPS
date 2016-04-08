@@ -1,4 +1,4 @@
-function Get-ServiceCatalogRO
+function Get-CiresonPortalServiceCatalogRO
 {
 <#
 .EXAMPLE
