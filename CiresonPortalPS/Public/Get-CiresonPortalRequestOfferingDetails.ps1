@@ -15,13 +15,13 @@
 #>
 [Cmdletbinding()]
 PARAM(
-[parameter(Mandatory)]
-[GUID]$UserID,
-[parameter(Mandatory)]
-[GUID]$RequestOfferingID,
-[parameter(Mandatory)]
-[GUID]$ServiceOfferingID,
-[switch]$IsScoped=$false
+    [parameter(Mandatory)]
+    [GUID]$UserID,
+    [parameter(Mandatory)]
+    [GUID]$RequestOfferingID,
+    [parameter(Mandatory)]
+    [GUID]$ServiceOfferingID,
+    [switch]$IsScoped=$false
 )
     $URI = $CiresonPortalURL,"api/V3/ServiceCatalog/GetRequestOffering?requestOfferingId=$RequestOfferingID&serviceOfferingId=$ServiceOfferingID&userId=$UserID&isScoped=$($IsScoped.tostring().tolower())" -join '/'
     Invoke-RestMethod $URI -Credential $CiresonPortalCred
