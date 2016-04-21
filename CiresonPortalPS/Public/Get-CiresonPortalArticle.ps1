@@ -55,6 +55,7 @@ function Get-CiresonPortalArticle
 	BEGIN
 	{
 		TRY{
+			Write-Verbose -Message $(New-ScriptMessage -Block BEGIN -message 'Checking Pre-Requisites')
 			Get-CiresonPortalPSConfiguration -WarningAction Stop
 		}
 		CATCH
