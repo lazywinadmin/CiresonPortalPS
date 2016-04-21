@@ -25,9 +25,6 @@ function Get-CiresonPortalArticle
 		#GetForGrid
 		Invoke-RestMethod $($CiresonPortalURL, "/V3/Article/GetForGrid" -join '/') -Credential $CiresonPortalCred -Method POST
 		
-		#Search
-		Invoke-RestMethod $($CiresonPortalURL, "/V3/Article?SearchValue=<WORD>" -join '/') -Credential $CiresonPortalCred -Method GET
-		
 		#Filter
 		api/V3/Article?articleId={articleId}
 		&title={title}
@@ -45,7 +42,7 @@ function Get-CiresonPortalArticle
 	
 	[CmdletBinding(DefaultParameterSetName = 'All')]
 	[OutputType([pscustomobject])]
-	param
+	PARAM
 	(
 		[Parameter(ParameterSetName = 'ArticleID',
 				   Mandatory = $true)]
@@ -55,28 +52,42 @@ function Get-CiresonPortalArticle
 				   Mandatory = $true)]
 		[String]$SearchValue
 	)
-	
-	$URI = $CiresonPortalURL, "/V3/Article" -join '/'
-	
-	
-	IF ($PSBoundParameters['ArticleID'])
+	BEGIN
 	{
-		# Retrieve a specific article details
-		#  https://support.cireson.com/Help/Api/GET-api-V3-Article_articleId
-		$URI = $URI += "?articleID=$ArticleID"
+		TRY{
+			Get-CiresonPortalPSConfiguration -WarningAction Stop
+		}
+		CATCH
+		{
+			# Stop the function
+			break
+		}
 	}
-	ELSEIF ($PSBoundParameters['SearchValue'])
+	PROCESS
 	{
-		# Search a specific Value
-		#  https://support.cireson.com/Help/Api/GET-api-V3-Article_searchValue
-		$URI = $URI += "?SearchValue=$SearchValue"
-	}
-	ELSE
-	{
-		# Retrieve all article
-		#  https://support.cireson.com/Help/Api/GET-api-V3-Article
-		$URI = $URI += "/Get"
-	}
 	
-	(Invoke-RestMethod "$URI" -Credential $CiresonPortalCred) -as [PSCustomObject]
+		$URI = $CiresonPortalURL, "api/V3/Article" -join '/'
+		
+		
+		IF ($PSBoundParameters['ArticleID'])
+		{
+			# Retrieve a specific article details
+			#  https://support.cireson.com/Help/Api/GET-api-V3-Article_articleId
+			$URI = $URI += "?articleID=$ArticleID"
+		}
+		ELSEIF ($PSBoundParameters['SearchValue'])
+		{
+			# Search a specific Value
+			#  https://support.cireson.com/Help/Api/GET-api-V3-Article_searchValue
+			$URI = $URI += "?SearchValue=$SearchValue"
+		}
+		ELSE
+		{
+			# Retrieve all article
+			#  https://support.cireson.com/Help/Api/GET-api-V3-Article
+			$URI = $URI += "/Get"
+		}
+		
+		(Invoke-RestMethod "$URI" -Credential $CiresonPortalCred) -as [PSCustomObject]
+	}
 }

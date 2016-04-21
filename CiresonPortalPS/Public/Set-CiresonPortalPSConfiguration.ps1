@@ -1,4 +1,4 @@
-function Set-CiresonPortalConnection
+function Set-CiresonPortalPSConfiguration
 {
 <#
 	.SYNOPSIS
@@ -17,10 +17,10 @@ function Set-CiresonPortalConnection
 		Specifies the URL of the CiresonPortal
 	
 	.EXAMPLE
-		Set-CiresonPortalConnection -URL "http://CiresonPortal.local/api" -Credential $cred
+		Set-CiresonPortalConnection -URL "http://CiresonPortal.local" -Credential $cred
 		
 	.EXAMPLE
-		Set-CiresonPortalConnection -URL "http://CiresonPortal.local/api" -Credential (Get-Credential)
+		Set-CiresonPortalConnection -URL "http://CiresonPortal.local" -Credential (Get-Credential)
 	
 	.NOTES
 		Francois-Xavier Cat

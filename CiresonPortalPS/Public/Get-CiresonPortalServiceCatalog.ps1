@@ -1,7 +1,7 @@
 ﻿function Get-CiresonPortalServiceCatalog
 {
 <#
-.SYNOPSYS
+.SYNOPSIS
     Function to retrieve the Service Catalog for a User
 .DESCRIPTION
     Function to retrieve the Service Catalog for a User
@@ -9,6 +9,11 @@
     Get-CiresonPortalServiceCatalog -UserID $User.ID
 .EXAMPLE
     Get-CiresonPortalServiceCatalog -ServiceOfferingID '14b7829f-e8d3-2f95-9d20-b54d3aa93556'
+.NOTES
+    Francois-Xavier	Cat
+    www.lazywinadmin.com
+    @lazywinadm
+    github.com/lazywinadmin
 #>
 [Cmdletbinding(DefaultParameterSetName="UserID")]
 PARAM(
@@ -25,7 +30,7 @@ PARAM(
     IF ($PSCmdlet.ParameterSetName -eq 'UserID')
     {
         Write-Verbose -Message "ParameterSetName = UserID"
-        $URI = $CiresonPortalURL,"/V3/ServiceCatalog/GetServiceCatalog?userId=$userId&isScoped=$($isScoped.tostring().tolower())" -join '/'
+        $URI = $CiresonPortalURL,"api/V3/ServiceCatalog/GetServiceCatalog?userId=$userId&isScoped=$($isScoped.tostring().tolower())" -join '/'
         $ServiceCatalog =Invoke-RestMethod $URI -Credential $CiresonPortalCred
 
         IF ($PSBoundParameters['IncludeImage'])
@@ -44,7 +49,7 @@ PARAM(
     IF ($PSCmdlet.ParameterSetName -eq 'ServiceOfferingID')
     {
         Write-Verbose -Message "ParameterSetName = ServiceOfferingID"
-        $URI = $CiresonPortalURL,"/V3/ServiceCatalog/GetByServiceOfferingId?serviceOfferingId=$ServiceOfferingID" -join '/'
+        $URI = $CiresonPortalURL,"api/V3/ServiceCatalog/GetByServiceOfferingId?serviceOfferingId=$ServiceOfferingID" -join '/'
         Invoke-RestMethod $URI -Credential $CiresonPortalCred
     }
 }

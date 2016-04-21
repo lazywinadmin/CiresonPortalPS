@@ -9,6 +9,11 @@ function Get-CiresonPortalUser
     Get-CiresonPortalUser -UserID $UserID
 .EXAMPLE
     Get-CiresonPortalUser -SIPAddress $SIPAddress
+.NOTES
+    Francois-Xavier	Cat
+    www.lazywinadmin.com
+    @lazywinadm
+    github.com/lazywinadmin
 #>
 [Cmdletbinding(DefaultParameterSetName="UserID")]
 PARAM(
@@ -19,11 +24,11 @@ PARAM(
 
     IF($PSBoundParameters['UserID'])
     {
-        $URI = $CiresonPortalURL,"/V3/User/GetUserRelatedInfoByUserId?userId=$UserID" -join '/'   
+        $URI = $CiresonPortalURL,"api/V3/User/GetUserRelatedInfoByUserId?userId=$UserID" -join '/'   
     }
     IF($PSBoundParameters['SIPAddress'])
     {
-     $URI = $CiresonPortalURL,"/V3/User/GetUserRelatedInfoBySIPAddress?sipAddress=$SIPAddress" -join '/'
+     $URI = $CiresonPortalURL,"api/V3/User/GetUserRelatedInfoBySIPAddress?sipAddress=$SIPAddress" -join '/'
     }
 
     Invoke-RestMethod $URI -Credential $CiresonPortalCred

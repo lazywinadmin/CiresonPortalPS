@@ -40,10 +40,34 @@ function Get-CiresonPortalEnum
 		
 		[switch]$Flatten
 	)
-	
-	$Argument = "id=$ClassID"
-	IF ($PSBoundParameters['ItemFilter']) { $Argument += "&itemFilter=$ItemFilter" }
-	IF ($PSBoundParameters['Flatten']) { $Argument += "&Flatten=$($Flatten.ToString().ToLower())" }
-	$URI = $CiresonPortalURL, "/V3/Enum/GetList?$Argument" -join '/'
-	(Invoke-RestMethod $URI -Credential $CiresonPortalCred) -as [pscustomobject]
+	BEGIN
+	{
+		TRY{
+			Write-Verbose -Message $(New-ScriptMessage -Block BEGIN -message 'Checking Pre-Requisites')
+			Get-CiresonPortalPSConfiguration -WarningAction Stop
+		}
+		CATCH
+		{
+			# Stop the function
+			break
+		}
+	}
+	PROCESS
+	{
+		TRY
+		{
+			# Build the Query
+			$Argument = "id=$ClassID"
+			IF ($PSBoundParameters['ItemFilter']) { $Argument += "&itemFilter=$ItemFilter" }
+			IF ($PSBoundParameters['Flatten']) { $Argument += "&Flatten=$($Flatten.ToString().ToLower())" }
+			$URI = $CiresonPortalURL, "api/V3/Enum/GetList?$Argument" -join '/'
+			
+			# Invoke the Query
+			Write-Verbose -Message $(New-ScriptMessage -Block PROCESS -message $URI)
+			(Invoke-RestMethod $URI -Credential $CiresonPortalCred) -as [pscustomobject]
+		}
+		CATCH{
+			$error[0]
+		}
+	}
 }

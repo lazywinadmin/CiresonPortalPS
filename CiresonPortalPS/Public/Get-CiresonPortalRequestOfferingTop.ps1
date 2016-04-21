@@ -1,12 +1,17 @@
 ﻿function Get-CiresonPortalRequestOfferingTop
 {
 <#
-.SYNOPSYS
+.SYNOPSIS
     Function to retrieve Top Request Offering for a User
 .DESCRIPTION
     Function to retrieve Top Request Offering for a User
 .EXAMPLE
     Get-CiresonPortalRequestOfferingTop -UserID $User.Id -ReturnAmount 2
+.NOTES
+    Francois-Xavier	Cat
+    www.lazywinadmin.com
+    @lazywinadm
+    github.com/lazywinadmin
 #>
 [Cmdletbinding()]
 PARAM(
@@ -15,7 +20,7 @@ PARAM(
 [int]$ReturnAmount,
 [switch]$IsScoped=$false
 )
-    $URI = $CiresonPortalURL,"/V3/ServiceCatalog/GetTopRequestOffering?userId=$UserID&returnAmount=$ReturnAmount&isScoped=$($IsScoped.tostring().tolower())" -join '/'
+    $URI = $CiresonPortalURL,"api/V3/ServiceCatalog/GetTopRequestOffering?userId=$UserID&returnAmount=$ReturnAmount&isScoped=$($IsScoped.tostring().tolower())" -join '/'
     Invoke-RestMethod $URI -Credential $CiresonPortalCred
 }
 

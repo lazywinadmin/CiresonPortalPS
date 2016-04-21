@@ -10,13 +10,14 @@
 #>
 [Cmdletbinding()]
 PARAM(
-[parameter(Mandatory)]
-[GUID]$UserID,
-[parameter(Mandatory)]
-[GUID]$RequestOfferingID
+    [parameter(Mandatory)]
+    [GUID]$UserID,
+    [parameter(Mandatory)]
+    [GUID]$RequestOfferingID
 )
-    $URI = $CiresonPortalURL,"/V3/ServiceCatalog/MarkFavorite?requestOfferingId=$RequestOfferingID&userId=$UserID" -join '/'
+    # Build the Query
+    $URI = $CiresonPortalURL,"api/V3/ServiceCatalog/MarkFavorite?requestOfferingId=$RequestOfferingID&userId=$UserID" -join '/'
+    
+    # Invoke the Query
     Invoke-RestMethod $URI -Credential $CiresonPortalCred -Method Post
 }
-
-Set-CiresonPortalRequestOfferingAsFavorite -RequestOfferingID 4c2e9de8-c70b-c2df-b0d0-a9820391d294 -UserID 7c7e9d78-c70b-c2df-b0d0-a9820391d294
