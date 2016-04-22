@@ -12,7 +12,6 @@ function Get-CiresonPortalUser
     
 .EXAMPLE
     Get-CiresonPortalUser -SIPAddress $SIPAddress
-<<<<<<< HEAD
     
     Retrieve a user using the SIPAddress
 .EXAMPLE
@@ -27,8 +26,6 @@ function Get-CiresonPortalUser
     Get-CiresonPortalUser -AllAnalysts
     
     Retrieve all the Analysts
-=======
->>>>>>> origin/master
 .NOTES
     Francois-Xavier	Cat
     www.lazywinadmin.com
@@ -45,7 +42,6 @@ function Get-CiresonPortalUser
         [parameter(ParameterSetName="DisplayName",Mandatory)]
         [string]$UserDisplayName,
 
-<<<<<<< HEAD
         [parameter(ParameterSetName="DisplayName")]
         [switch]$FilterByAnalyst=$false,
 
