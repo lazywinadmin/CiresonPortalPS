@@ -30,6 +30,7 @@ function Get-CiresonPortalEnum
 		@lazywinadm
 		github.com/lazywinadmin
 #>
+#requires -version 3
 	[CmdletBinding()]
 	param
 	(
@@ -44,7 +45,7 @@ function Get-CiresonPortalEnum
 	{
 		TRY{
 			Write-Verbose -Message $(New-ScriptMessage -Block BEGIN -message 'Checking Pre-Requisites')
-			Get-CiresonPortalPSConfiguration -WarningAction Stop
+			[void](Get-CiresonPortalPSConfiguration -WarningAction Stop)
 		}
 		CATCH
 		{

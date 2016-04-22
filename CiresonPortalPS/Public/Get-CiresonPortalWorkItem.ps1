@@ -1,23 +1,23 @@
-function Get-CiresonPortalWorkItemByUserGroup
+function Get-CiresonPortalWorkItem
 {
 <#
-    # Get Work Item for my group (Returns Grid Work Items for User Groups)
-
-    Get-CiresonPortalWorkItemByUserGroup -UserID $UserID
-    .NOTES
+.SYNOPSIS
+    Function to retrieve WorkItem
+.DESCRIPTION
+    Function to retrieve WorkItem
+.EXAMPLE
+    Get-CiresonPortalWorkItemClosedByUser -UserID $TestUserGUID -MaxCount 1
+.NOTES
     Francois-Xavier	Cat
     www.lazywinadmin.com
     @lazywinadm
     github.com/lazywinadmin
 #>
-#requires -version 3
 [CmdletBinding()]
 PARAM(
     [parameter(Mandatory)]
     [guid]$UserID,
-    [Switch]$isScoped=$false,
-    [Switch]$showActivities=$true,
-    [Switch]$showInactiveItems=$true
+    [int]$MaxCount
 )
     BEGIN
 	{
@@ -34,7 +34,8 @@ PARAM(
 	PROCESS
 	{
         # Build the Query
-        $URI = $CiresonPortalURL,"api/V3/WorkItem/GetGridWorkItemsMyGroups?userId=$UserID&isScoped=$($isScoped.tostring().tolower())&showActivities=$($showActivities.tostring().tolower())&showInactiveItems=$($showInactiveItems.tostring().tolower())" -join '/'
+        $URI = $CiresonPortalURL,"api/V3/WorkItem/GetGridWorkItemsMyClosedRequests?userId=$UserID&maxCount=$MaxCount" -join '/'
+        Write-Verbose -Message $(New-ScriptMessage -Block PROCESS -message $URI)
         
         # Invoke the Query
         (Invoke-RestMethod $URI -Credential $CiresonPortalCred) -as [pscustomobject]

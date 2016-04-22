@@ -13,6 +13,7 @@
     @lazywinadm
     github.com/lazywinadmin
 #>
+#requires -version 3
 [Cmdletbinding()]
 PARAM(
     [parameter(Mandatory)]

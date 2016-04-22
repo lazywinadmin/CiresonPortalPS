@@ -16,7 +16,7 @@ function Get-CiresonPortalConfigurationItem
 		@lazywinadmin
 		github.com/lazywinadmin
 #>
-	
+	#requires -version 3
 	[CmdletBinding()]
 	[OutputType([pscustomobject])]
 	param
@@ -30,7 +30,7 @@ function Get-CiresonPortalConfigurationItem
 		TRY
 		{
 			Write-Verbose -Message $(New-ScriptMessage -Block BEGIN -message 'Checking Pre-Requisites')
-			Get-CiresonPortalPSConfiguration -WarningAction Stop
+			[void](Get-CiresonPortalPSConfiguration -WarningAction Stop)
 		}
 		CATCH
 		{

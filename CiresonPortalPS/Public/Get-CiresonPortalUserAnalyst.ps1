@@ -1,6 +1,11 @@
 function Get-CiresonPortalUserAnalyst
 {
 <#
+.SYNOPSIS
+	Function to retrieve Analysts
+.DESCRIPTION
+	Function to retrieve Analysts
+	This function is relying on Get-CiresonPortalUser
 .EXAMPLE
     Get-CiresonPortalAnalyst
 .NOTES
@@ -9,8 +14,8 @@ function Get-CiresonPortalUserAnalyst
     @lazywinadm
     github.com/lazywinadmin
 #>
+	[CmdletBinding()]
 	PARAM ()
 	# User who are Analyst
-	$URI = $CiresonPortalURL, "api/V3/User/GetAnalystResults" -join '/'
-	(Invoke-RestMethod $URI -Credential $CiresonPortalCred) -as [PSCustomObject]
+	Get-CiresonPortalUser -AllAnalysts
 }

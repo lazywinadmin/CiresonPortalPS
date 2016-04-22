@@ -13,14 +13,15 @@
     @lazywinadm
     github.com/lazywinadmin
 #>
+#requires -version 3
 [Cmdletbinding()]
 PARAM(
-[parameter(Mandatory)]
-[GUID]$UserID,
-[int]$ReturnAmount,
-[switch]$IsScoped=$false
+    [parameter(Mandatory)]
+    [GUID]$UserID,
+    [int]$ReturnAmount,
+    [switch]$IsScoped=$false
 )
     $URI = $CiresonPortalURL,"api/V3/ServiceCatalog/GetTopRequestOffering?userId=$UserID&returnAmount=$ReturnAmount&isScoped=$($IsScoped.tostring().tolower())" -join '/'
-    Invoke-RestMethod $URI -Credential $CiresonPortalCred
+    (Invoke-RestMethod $URI -Credential $CiresonPortalCred) -as [pscustomobject]
 }
 

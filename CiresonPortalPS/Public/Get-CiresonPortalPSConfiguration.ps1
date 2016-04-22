@@ -20,22 +20,24 @@ function Get-CiresonPortalPSConfiguration
 #>
 	#requires -Version 3
 	[CmdletBinding()]
-	param()
-    
-    $CheckCiresonPortalURL = (Get-Variable -name CiresonPortalURL -Scope Global -ErrorAction SilentlyContinue)
-    $CheckCiresonPortalCredential = (Get-Variable -name CiresonPortalCred -Scope Global -ErrorAction SilentlyContinue)
-	
-    $Check = [PSCustomObject][ordered]@{
-				"URL" = $CheckCiresonPortalURL
-				"Credential" = $CheckCiresonPortalCredential}
-
-
-	IF(-not$CheckCiresonPortalURL -or -not$CheckCiresonPortalCredential)
+	PARAM()
+	PROCESS
 	{
-		Write-Warning -Message "[Get-CiresonPortalPSConfiguration] Missing settings, Use Set-CiresonPortalPSConfiguration to configure the connection"
-        $Check
+		$CheckCiresonPortalURL = (Get-Variable -name CiresonPortalURL -Scope Global -ErrorAction SilentlyContinue)
+		$CheckCiresonPortalCredential = (Get-Variable -name CiresonPortalCred -Scope Global -ErrorAction SilentlyContinue)
+		
+		$Check = [PSCustomObject][ordered]@{
+					"URL" = $CheckCiresonPortalURL
+					"Credential" = $CheckCiresonPortalCredential}
+
+
+		IF(-not$CheckCiresonPortalURL -or -not$CheckCiresonPortalCredential)
+		{
+			Write-Warning -Message "[Get-CiresonPortalPSConfiguration] Missing settings, Use Set-CiresonPortalPSConfiguration to configure the connection"
+			$Check
+		}
+		ELSE{
+			$Check
+		}
 	}
-    ELSE{
-        $Check
-    }
 }

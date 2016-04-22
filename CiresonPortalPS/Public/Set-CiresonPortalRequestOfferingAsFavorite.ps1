@@ -8,16 +8,33 @@
 .EXAMPLE
     Set-CiresonPortalRequestOfferingAsFavorite -RequestOfferingID 4c2e9de8-c70b-c2df-b0d0-a9820391d294 -UserID 7c7e9d78-c70b-c2df-b0d0-a9820391d294
 #>
-[Cmdletbinding()]
+#requires -version 3
+[CmdletBinding()]
 PARAM(
     [parameter(Mandatory)]
     [GUID]$UserID,
     [parameter(Mandatory)]
     [GUID]$RequestOfferingID
 )
-    # Build the Query
-    $URI = $CiresonPortalURL,"api/V3/ServiceCatalog/MarkFavorite?requestOfferingId=$RequestOfferingID&userId=$UserID" -join '/'
-    
-    # Invoke the Query
-    Invoke-RestMethod $URI -Credential $CiresonPortalCred -Method Post
+    BEGIN
+	{
+		TRY{
+			Write-Verbose -Message $(New-ScriptMessage -Block BEGIN -message 'Checking Pre-Requisites')
+			[void](Get-CiresonPortalPSConfiguration -WarningAction Stop)
+		}
+		CATCH
+		{
+			# Stop the function
+			break
+		}
+	}
+	PROCESS
+	{
+        # Build the Query
+        $URI = $CiresonPortalURL,"api/V3/ServiceCatalog/MarkFavorite?requestOfferingId=$RequestOfferingID&userId=$UserID" -join '/'
+        Write-Verbose -Message $(New-ScriptMessage -Block PROCESS -message $URI)
+        
+        # Invoke the Query
+        Invoke-RestMethod $URI -Credential $CiresonPortalCred -Method Post
+    }
 }

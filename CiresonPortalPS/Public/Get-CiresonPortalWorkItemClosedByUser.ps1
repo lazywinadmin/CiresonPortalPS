@@ -11,13 +11,28 @@ function Get-CiresonPortalWorkItemClosedByUser
     github.com/lazywinadmin
 #>
 PARAM(
-[parameter(Mandatory)]
-[guid]$UserID,
-[int]$MaxCount
+    [parameter(Mandatory)]
+    [guid]$UserID,
+    [int]$MaxCount
 )
-    # Build the Query
-    $URI = $CiresonPortalURL,"api/V3/WorkItem/GetGridWorkItemsMyClosedRequests?userId=$UserID&maxCount=$MaxCount" -join '/'
-    
-    # Invoke the Query
-    Invoke-RestMethod $URI -Credential $CiresonPortalCred
+    BEGIN
+	{
+		TRY{
+			Write-Verbose -Message $(New-ScriptMessage -Block BEGIN -message 'Checking Pre-Requisites')
+			[void](Get-CiresonPortalPSConfiguration -WarningAction Stop)
+		}
+		CATCH
+		{
+			# Stop the function
+			break
+		}
+	}
+	PROCESS
+	{
+        # Build the Query
+        $URI = $CiresonPortalURL,"api/V3/WorkItem/GetGridWorkItemsMyClosedRequests?userId=$UserID&maxCount=$MaxCount" -join '/'
+        
+        # Invoke the Query
+        (Invoke-RestMethod $URI -Credential $CiresonPortalCred) -as [pscustomobject]
+    }
 }

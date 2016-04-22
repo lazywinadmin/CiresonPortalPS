@@ -39,7 +39,7 @@ function Get-CiresonPortalArticle
 		&languageId={languageId}
 		&languageName={languageName}
 #>
-	
+	#requires -version 3
 	[CmdletBinding(DefaultParameterSetName = 'All')]
 	[OutputType([pscustomobject])]
 	PARAM
@@ -56,7 +56,7 @@ function Get-CiresonPortalArticle
 	{
 		TRY{
 			Write-Verbose -Message $(New-ScriptMessage -Block BEGIN -message 'Checking Pre-Requisites')
-			Get-CiresonPortalPSConfiguration -WarningAction Stop
+			[void](Get-CiresonPortalPSConfiguration -WarningAction Stop)
 		}
 		CATCH
 		{

@@ -31,7 +31,7 @@ PARAM(
     {
         Write-Verbose -Message "ParameterSetName = UserID"
         $URI = $CiresonPortalURL,"api/V3/ServiceCatalog/GetServiceCatalog?userId=$userId&isScoped=$($isScoped.tostring().tolower())" -join '/'
-        $ServiceCatalog =Invoke-RestMethod $URI -Credential $CiresonPortalCred
+        $ServiceCatalog = (Invoke-RestMethod $URI -Credential $CiresonPortalCred) -as [pscustomobject]
 
         IF ($PSBoundParameters['IncludeImage'])
         {
@@ -50,6 +50,6 @@ PARAM(
     {
         Write-Verbose -Message "ParameterSetName = ServiceOfferingID"
         $URI = $CiresonPortalURL,"api/V3/ServiceCatalog/GetByServiceOfferingId?serviceOfferingId=$ServiceOfferingID" -join '/'
-        Invoke-RestMethod $URI -Credential $CiresonPortalCred
+        (Invoke-RestMethod $URI -Credential $CiresonPortalCred) -as [pscustomobject]
     }
 }

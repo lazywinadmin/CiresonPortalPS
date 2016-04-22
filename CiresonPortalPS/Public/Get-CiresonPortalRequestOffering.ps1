@@ -13,10 +13,11 @@
 		@lazywinadm
 		github.com/lazywinadmin
 #>
+#requires -version 3
 [Cmdletbinding()]
 PARAM(
-[parameter(Mandatory)]
-[GUID]$RequestOfferingID
+    [parameter(Mandatory)]
+    [GUID]$RequestOfferingID
 )
     $URI = $CiresonPortalURL,"api/V3/ServiceCatalog/GetByRequestOfferingId?requestOfferingId=$RequestOfferingID" -join '/'
     Invoke-RestMethod $URI -Credential $CiresonPortalCred
