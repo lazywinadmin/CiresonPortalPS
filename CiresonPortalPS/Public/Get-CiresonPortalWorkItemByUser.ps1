@@ -99,7 +99,7 @@ PARAM(
 		CATCH
 		{
 			# Stop the function
-      Write-Error -Message $Error[0] | Format-List * -Force
+      Write-Error -Message $Error[0]
 			break
 		}
 	}
