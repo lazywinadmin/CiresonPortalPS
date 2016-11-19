@@ -9,7 +9,7 @@
     Set-CiresonPortalRequestOfferingAsFavorite -RequestOfferingID 4c2e9de8-c70b-c2df-b0d0-a9820391d294 -UserID 7c7e9d78-c70b-c2df-b0d0-a9820391d294
 #>
 #requires -version 3
-[CmdletBinding()]
+[CmdletBinding(SupportsShouldProcess = $True)]
 PARAM(
     [parameter(Mandatory)]
     [GUID]$UserID,
@@ -25,16 +25,20 @@ PARAM(
 		CATCH
 		{
 			# Stop the function
+            Write-Error $Error[0]
 			break
 		}
 	}
 	PROCESS
 	{
-        # Build the Query
-        $URI = $CiresonPortalURL,"api/V3/ServiceCatalog/MarkFavorite?requestOfferingId=$RequestOfferingID&userId=$UserID" -join '/'
-        Write-Verbose -Message $(New-ScriptMessage -Block PROCESS -message $URI)
-        
-        # Invoke the Query
-        Invoke-RestMethod $URI -Credential $CiresonPortalCred -Method Post
+        if($PSCmdlet.ShouldProcess($UserID,'Set Request Offering as Favorite'))
+        {
+            # Build the Query
+            $URI = $CiresonPortalURL,"api/V3/ServiceCatalog/MarkFavorite?requestOfferingId=$RequestOfferingID&userId=$UserID" -join '/'
+            Write-Verbose -Message $(New-ScriptMessage -Block PROCESS -message "Uri = $URI")
+            
+            # Invoke the Query
+            Invoke-RestMethod $URI -Credential $CiresonPortalCred -Method Post
+        }
     }
 }

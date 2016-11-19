@@ -28,13 +28,18 @@ function Set-CiresonPortalPSConfiguration
 		www.lazywinadmin.com
 		github.com/lazywinadmin
 #>
+	[CmdletBinding(SupportsShouldProcess = $True)]
 	PARAM (
-		[parameter(Mandatory)]
-    	[Alias('RunAs')]
-		[System.Management.Automation.Credential()]
-		$Credential = [System.Management.Automation.PSCredential]::Empty,
-    	[parameter(Mandatory)]
-    	$URL)
-    Set-Variable -name CiresonPortalCred -Value $Credential -Scope Global -Force
-    Set-Variable -name CiresonPortalURL -Value $URL -Scope Global -Force
+		[parameter(Mandatory = $true)]
+		[Alias("RunAs")]
+		[System.Management.Automation.PSCredential][System.Management.Automation.Credential()]
+		$Credential,
+		[parameter(Mandatory = $true)]
+		$URL)
+	
+	if ($pscmdlet.ShouldProcess($Credential, "Set Variables used by Cireson Portal cmdlets"))
+	{
+		Set-Variable -name CiresonPortalCred -Value $Credential -Scope Global -Force
+		Set-Variable -name CiresonPortalURL -Value $URL -Scope Global -Force
+	}
 }
