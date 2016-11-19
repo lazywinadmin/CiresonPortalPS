@@ -32,7 +32,8 @@ function Set-CiresonPortalPSConfiguration
 	PARAM (
 		[parameter(Mandatory = $true)]
 		[Alias("RunAs")]
-		[System.Management.Automation.PSCredential][System.Management.Automation.Credential()]
+		[System.Management.Automation.PSCredential]
+		[System.Management.Automation.Credential()]
 		$Credential,
 		[parameter(Mandatory = $true)]
 		$URL)
