@@ -92,7 +92,7 @@ PrivateData = @{
     PSData = @{
 
         # Tags applied to this module. These help with module discovery in online galleries.
-        Tags = 'Cireson', 'Cireson Portal', 'CiresonPortal'
+        Tags = 'Cireson', 'CiresonPortal'
 
         # A URL to the license for this module.
         LicenseUri = 'https://github.com/lazywinadmin/CiresonPortalPS/blob/master/LICENSE.md'
