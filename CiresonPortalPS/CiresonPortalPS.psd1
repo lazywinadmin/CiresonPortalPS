@@ -66,16 +66,16 @@ RequiredAssemblies = @()
 # NestedModules = @()
 
 # Functions to export from this module
-FunctionsToExport = '*'
+FunctionsToExport = 'Get-CiresonPortalArticle', 'Get-CiresonPortalConfigurationItem', 'Get-CiresonPortalEnum', 'Get-CiresonPortalPSConfiguration', 'Get-CiresonPortalRequestOffering', 'Get-CiresonPortalRequestOfferingDetails', 'Get-CiresonPortalRequestOfferingTop', 'Get-CiresonPortalServiceCatalog', 'Get-CiresonPortalTemplate', 'Get-CiresonPortalUserAnalyst', 'Get-CiresonPortalUserGroup', 'Get-CiresonPortalUserPermission', 'Get-CiresonPortalUserPreference', 'Get-CiresonPortalUserRequest', 'Get-CiresonPortalUserSupportGroup', 'Get-CiresonPortalUserSupportGroupMember', 'Get-CiresonPortalUserTierQueue', 'Get-CiresonPortalWorkItem', 'Get-CiresonPortalWorkItemByUserGroup', 'Get-CiresonPortalWorkItemClosedByUser', 'Search-CiresonPortalServiceCatalog', 'Set-CiresonPortalPSConfiguration', 'Set-CiresonPortalRequestOfferingAsFavorite', 'Test-CiresonPortalUserIsAuthorized'
 
 # Cmdlets to export from this module
-CmdletsToExport = '*'
+# CmdletsToExport = '*'
 
 # Variables to export from this module
-VariablesToExport = '*'
+# VariablesToExport = '*'
 
 # Aliases to export from this module
-AliasesToExport = '*'
+# AliasesToExport = '*'
 
 # DSC resources to export from this module
 # DscResourcesToExport = @()
