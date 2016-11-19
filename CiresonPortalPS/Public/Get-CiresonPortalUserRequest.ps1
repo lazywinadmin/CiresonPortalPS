@@ -20,6 +20,6 @@ function Get-CiresonPortalUserRequest
 	}
 	PROCESS
 	{
-        	Get-CiresonPortalUser -UserID $UserID | select -ExpandProperty myrequest
+        	Get-CiresonPortalUser -UserID $UserID | Select-Object -ExpandProperty myrequest
     }
 }
