@@ -7,7 +7,10 @@ Official documentation: https://support.cireson.com/Help#overview
 
 ## Installation
 #### Download from PowerShell Gallery
-Coming soon...
+```powershell
+Install-Module CiresonPortalPS
+```
+
 #### Download from GitHub repository
 
 * Download the repository
