@@ -16,8 +16,8 @@ PARAM(
     [parameter(Mandatory)]
     [guid]$UserID,
     [Switch]$isScoped=$false,
-    [Switch]$showActivities=$true,
-    [Switch]$showInactiveItems=$true
+    [Switch]$showActivities,
+    [Switch]$showInactiveItems
 )
     BEGIN
 	{
@@ -28,6 +28,7 @@ PARAM(
 		CATCH
 		{
 			# Stop the function
+            Write-Error $Error[0]
 			break
 		}
 	}
@@ -35,7 +36,8 @@ PARAM(
 	{
         # Build the Query
         $URI = $CiresonPortalURL,"api/V3/WorkItem/GetGridWorkItemsMyGroups?userId=$UserID&isScoped=$($isScoped.tostring().tolower())&showActivities=$($showActivities.tostring().tolower())&showInactiveItems=$($showInactiveItems.tostring().tolower())" -join '/'
-        
+        Write-Verbose -Message $(New-ScriptMessage -Block PROCESS -message "Uri = $Uri")
+
         # Invoke the Query
         (Invoke-RestMethod $URI -Credential $CiresonPortalCred) -as [pscustomobject]
     }
