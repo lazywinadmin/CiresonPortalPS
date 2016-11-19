@@ -32,29 +32,27 @@ function Get-CiresonPortalUser
     @lazywinadm
     github.com/lazywinadmin
 #>
-    [Cmdletbinding(DefaultParameterSetName="UserID")]
-    PARAM(
-        [parameter(ParameterSetName="UserID",Mandatory)]
-        [Guid]$UserID,
-        [parameter(ParameterSetName="SIPAddress",Mandatory)]
-        $SipAddress,
-        [alias('UserFilter')]
-        [parameter(ParameterSetName="DisplayName",Mandatory)]
-        [string]$UserDisplayName,
-
-        [parameter(ParameterSetName="DisplayName")]
-        [switch]$FilterByAnalyst=$false,
-
-        [parameter(ParameterSetName="DisplayName")]
-        [int]$maxNumberOfResults=5,
-
-        [parameter(ParameterSetName="AllAnalysts")]
-        [Switch]$AllAnalysts
-    )
-
-    BEGIN
+	[Cmdletbinding(DefaultParameterSetName = "UserID")]
+	PARAM (
+		[parameter(ParameterSetName = "UserID", Mandatory)]
+		[Guid]$UserID,
+		[parameter(ParameterSetName = "SIPAddress", Mandatory)]
+		$SipAddress,
+		[alias('UserFilter')]
+		[parameter(ParameterSetName = "DisplayName", Mandatory)]
+		[string]$UserDisplayName,
+		[parameter(ParameterSetName = "DisplayName")]
+		[switch]$FilterByAnalyst = $false,
+		[parameter(ParameterSetName = "DisplayName")]
+		[int]$maxNumberOfResults = 5,
+		[parameter(ParameterSetName = "AllAnalysts")]
+		[Switch]$AllAnalysts
+	)
+	
+	BEGIN
 	{
-		TRY{
+		TRY
+		{
 			Write-Verbose -Message $(New-ScriptMessage -Block BEGIN -message 'Checking Pre-Requisites')
 			[void](Get-CiresonPortalPSConfiguration -WarningAction Stop)
 		}
@@ -64,44 +62,45 @@ function Get-CiresonPortalUser
 			break
 		}
 	}
-    PROCESS
-    {
-        IF($PSBoundParameters['SIPAddress'])
-        {
-            # Build the Query
-            $URI = $CiresonPortalURL,"api/V3/User/GetUserRelatedInfoBySIPAddress?sipAddress=$SIPAddress" -join '/'
-            
-            # Invoke the Query
-            (Invoke-RestMethod $URI -Credential $CiresonPortalCred) -as [pscustomobject]
-        }
-        ELSEIF($PSBoundParameters['UserDisplayName'])
-        {
-            Write-Verbose -Message $(New-ScriptMessage -Block PROCESS -message 'ParameterSetName = UserDisplayName')
-            
-            # Build the Query
-            $URI = $CiresonPortalURL,"api/V3/User/GetUserList?userFilter=$UserDisplayName&filterByAnalyst=$($FilterByAnalyst.tostring())&groupsOnly=false&maxNumberOfResults=$maxNumberOfResults" -join '/'
-            
-            # Invoke the Query
-            (Invoke-RestMethod $URI -Credential $CiresonPortalCred) -as [pscustomobject]
-        }
-        ELSEIF($PSBoundParameters['UserID'])
-        {
-            Write-Verbose -Message $(New-ScriptMessage -Block PROCESS -message 'ParameterSetName = UserID')
-            
-            # Build the Query
-            $URI = $CiresonPortalURL,"api/V3/User/GetUserRelatedInfoByUserId?userId=$UserID" -join '/'
-            
-            # Invoke the Query 
-            (Invoke-RestMethod $URI -Credential $CiresonPortalCred) | ConvertFrom-Json
-        }
-        ELSEIF($PSBoundParameters['AllAnalysts'])
-        {
-            Write-Verbose -Message $(New-ScriptMessage -Block PROCESS -message 'ParameterSetName = AllAnalysts')
-            
-            # Build the Query
-            $URI = $CiresonPortalURL, "api/V3/User/GetAnalystResults" -join '/'
-            
-            # Invoke the Query
-	        (Invoke-RestMethod $URI -Credential $CiresonPortalCred) -as [PSCustomObject]
-        }
+	PROCESS
+	{
+		IF ($PSBoundParameters['SIPAddress'])
+		{
+			# Build the Query
+			$URI = $CiresonPortalURL, "api/V3/User/GetUserRelatedInfoBySIPAddress?sipAddress=$SIPAddress" -join '/'
+			
+			# Invoke the Query
+			(Invoke-RestMethod $URI -Credential $CiresonPortalCred) -as [pscustomobject]
+		}
+		ELSEIF ($PSBoundParameters['UserDisplayName'])
+		{
+			Write-Verbose -Message $(New-ScriptMessage -Block PROCESS -message 'ParameterSetName = UserDisplayName')
+			
+			# Build the Query
+			$URI = $CiresonPortalURL, "api/V3/User/GetUserList?userFilter=$UserDisplayName&filterByAnalyst=$($FilterByAnalyst.tostring())&groupsOnly=false&maxNumberOfResults=$maxNumberOfResults" -join '/'
+			
+			# Invoke the Query
+			(Invoke-RestMethod $URI -Credential $CiresonPortalCred) -as [pscustomobject]
+		}
+		ELSEIF ($PSBoundParameters['UserID'])
+		{
+			Write-Verbose -Message $(New-ScriptMessage -Block PROCESS -message 'ParameterSetName = UserID')
+			
+			# Build the Query
+			$URI = $CiresonPortalURL, "api/V3/User/GetUserRelatedInfoByUserId?userId=$UserID" -join '/'
+			
+			# Invoke the Query 
+			(Invoke-RestMethod $URI -Credential $CiresonPortalCred) | ConvertFrom-Json
+		}
+		ELSEIF ($PSBoundParameters['AllAnalysts'])
+		{
+			Write-Verbose -Message $(New-ScriptMessage -Block PROCESS -message 'ParameterSetName = AllAnalysts')
+			
+			# Build the Query
+			$URI = $CiresonPortalURL, "api/V3/User/GetAnalystResults" -join '/'
+			
+			# Invoke the Query
+			(Invoke-RestMethod $URI -Credential $CiresonPortalCred) -as [PSCustomObject]
+		}
+	}
 }
