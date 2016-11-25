@@ -1,0 +1,36 @@
+# Appveyor Configuration File
+# See http://www.appveyor.com/docs/appveyor-yml for many more options
+
+# Allow WMF5
+os: WMF 5
+
+# Skip on updates to the readme.
+# We can force this by adding [skip ci] or [ci skip] anywhere in commit message 
+skip_commits:
+  message: /updated readme.*|update readme.*s/|test
+
+build: false
+
+#Kick off the CI/CD pipeline
+test_script:
+  - ps: . .\build.ps1
+
+
+
+# Set Version
+#version: '1.0.{build}'
+
+# Set Environment Variables
+#environment:
+#  variable1: value
+#  variable2: value
+
+# Secured Variables (Go on Appveyor. Account/-> Encrypt data tool)
+#environment:
+#  my_variable:
+#    secure: <encrypt_value>
+
+
+
+# Build Pipeline
+# https://www.appveyor.com/docs/build-configuration/#build-pipeline
