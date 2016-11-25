@@ -17,7 +17,7 @@
 $ModuleName = ((Split-path (Split-Path ($MyInvocation.MyCommand.Path) -Parent)) -split '\\')[-1]
 
 # Remove module if loaded
-Remove-Module -Name $ModuleName
+Remove-Module -Name $ModuleName -ErrorAction SilentlyContinue
 
 # Get the Module PSD1 Path
 $ModulePath = "$(Split-path (Split-Path $MyInvocation.MyCommand.Path) -Parent)\$ModuleName\$ModuleName.psd1"
