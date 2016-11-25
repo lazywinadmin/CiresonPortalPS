@@ -1,3 +1,4 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/yl9v97tl1o5ydsy6?svg=true)](https://ci.appveyor.com/project/lazywinadmin/ciresonportalps)
 # CiresonPortalPS
 This PowerShell module allows you to interact with the Cireson Portal API. 
 
