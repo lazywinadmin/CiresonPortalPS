@@ -1,43 +1,53 @@
 function Get-CiresonPortalArticle
 {
 <#
-	.SYNOPSIS
-		Function to retrieve the Article (Knowledge Base articke) from the Cireson Portal
+.SYNOPSIS
+	Function to retrieve the Article (Knowledge Base articke) from the Cireson Portal
+
+.DESCRIPTION
+	Function to retrieve the Article (Knowledge Base articke) from the Cireson Portal
+
+	By default if no parameter is specified, the function will retrieve all the article
+
+.PARAMETER ArticleID
+	Specifies the Article ID to retrieve
+
+.PARAMETER SearchValue
+	Specifies the String to retrieve accross all the articles
+
+.EXAMPLE
+	Get-CiresonPortalArticle -ArticleID '12'
+
+	Retrieve article 12 from the knowledge base
+
+.EXAMPLE
+	Get-CiresonPortalArticle $SearchValue 'Orchestrator'
+
+	Retrieve any article with the string 'Orchestrator'
+
+.NOTES
+	Francois-Xavier Cat
+	lazywinadmin.com
+	@lazywinadm
+	github.com/lazywinadmin
 	
-	.DESCRIPTION
-		Function to retrieve the Article (Knowledge Base articke) from the Cireson Portal
+	TODO:
+	#GetForGrid
+	Invoke-RestMethod $($CiresonPortalURL, "/V3/Article/GetForGrid" -join '/') -Credential $CiresonPortalCred -Method POST
 	
-		By default if no parameter is specified, the function will retrieve all the article
-	
-	.PARAMETER ArticleID
-		Specifies the Article ID to retrieve
-	
-	.PARAMETER SearchValue
-		Specifies the String to retrieve accross all the articles
-	
-	.NOTES
-		Francois-Xavier Cat
-		lazywinadmin.com
-		@lazywinadmin
-		github.com/lazywinadmin
-		
-		TODO:
-		#GetForGrid
-		Invoke-RestMethod $($CiresonPortalURL, "/V3/Article/GetForGrid" -join '/') -Credential $CiresonPortalCred -Method POST
-		
-		#Filter
-		api/V3/Article?articleId={articleId}
-		&title={title}
-		&createdDate={createdDate}
-		&createdDateAfter={createdDateAfter}
-		&lastModifiedDate={lastModifiedDate}
-		&lastModifiedDateAfter={lastModifiedDateAfter}
-		&statusId={statusId}&typeId={typeId}
-		&categoryId={categoryId}
-		&ownerId={ownerId}
-		&lastModifiedById={lastModifiedById}
-		&languageId={languageId}
-		&languageName={languageName}
+	#Filter
+	api/V3/Article?articleId={articleId}
+	&title={title}
+	&createdDate={createdDate}
+	&createdDateAfter={createdDateAfter}
+	&lastModifiedDate={lastModifiedDate}
+	&lastModifiedDateAfter={lastModifiedDateAfter}
+	&statusId={statusId}&typeId={typeId}
+	&categoryId={categoryId}
+	&ownerId={ownerId}
+	&lastModifiedById={lastModifiedById}
+	&languageId={languageId}
+	&languageName={languageName}
 #>
 	#requires -version 3
 	[CmdletBinding(DefaultParameterSetName = 'All')]

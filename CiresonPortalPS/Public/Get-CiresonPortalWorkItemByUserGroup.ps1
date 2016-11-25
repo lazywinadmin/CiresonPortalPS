@@ -1,12 +1,23 @@
 function Get-CiresonPortalWorkItemByUserGroup
 {
 <#
-    # Get Work Item for my group (Returns Grid Work Items for User Groups)
-
+.SYNOPSIS
+    Returns Grid Work Items for User Groups
+.DESCRIPTION
+    Returns Grid Work Items for User Groups
+.PARAMETER UserID
+    The Guid user Id.
+.PARAMETER isScoped
+    Is the user scoped ?
+.PARAMETER ShowActivities
+    Return Activities
+.PARAMETER ShowInactiveItems
+    Return inactive work items
+.EXAMPLE
     Get-CiresonPortalWorkItemByUserGroup -UserID $UserID
-    .NOTES
-    Francois-Xavier	Cat
-    www.lazywinadmin.com
+.NOTES
+    Francois-Xavier Cat
+    lazywinadmin.com
     @lazywinadm
     github.com/lazywinadmin
 #>
@@ -16,8 +27,8 @@ PARAM(
     [parameter(Mandatory)]
     [guid]$UserID,
     [Switch]$isScoped=$false,
-    [Switch]$showActivities,
-    [Switch]$showInactiveItems
+    [Switch]$ShowActivities,
+    [Switch]$ShowInactiveItems
 )
     BEGIN
 	{

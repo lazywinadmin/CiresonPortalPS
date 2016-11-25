@@ -43,8 +43,8 @@ function Get-CiresonPortalUserGroup
     IsLocalizationManager          : False
 
 .NOTES
-    Francois-Xavier	Cat
-    www.lazywinadmin.com
+    Francois-Xavier Cat
+    lazywinadmin.com
     @lazywinadm
     github.com/lazywinadmin
 #>

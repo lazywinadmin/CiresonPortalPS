@@ -8,9 +8,11 @@ function Get-CiresonPortalUserAnalyst
 	This function is relying on Get-CiresonPortalUser
 .EXAMPLE
     Get-CiresonPortalAnalyst
+
+	Returns all the Analyst accounts
 .NOTES
-	Francois-Xavier	Cat
-    www.lazywinadmin.com
+	Francois-Xavier Cat
+    lazywinadmin.com
     @lazywinadm
     github.com/lazywinadmin
 #>

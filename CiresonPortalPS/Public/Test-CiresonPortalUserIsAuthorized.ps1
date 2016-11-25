@@ -1,11 +1,19 @@
 ﻿function Test-CiresonPortalUserIsAuthorized
 {
 <#
+.SYNOPSIS
+    Checks if the user is authorized to use the portal if so a ConsoleUser object is returned.
+.DESCRIPTION
+    Checks if the user is authorized to use the portal if so a ConsoleUser object is returned.
+.PARAMETER UserName
+    Specifies the account to check
+.PARAMETER Domain
+    Specifies the domain where the username belong
 .EXAMPLE
     Test-CiresonPortalUserIsAuthorized -UserName 'francois-xavier.cat' -Domain 'TestDomain'
 .NOTES
-    Francois-Xavier	Cat
-    www.lazywinadmin.com
+    Francois-Xavier Cat
+    lazywinadmin.com
     @lazywinadm
     github.com/lazywinadmin
 #>

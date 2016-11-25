@@ -1,12 +1,30 @@
 function Get-CiresonPortalTemplate
 {
 <#
+.SYNOPSIS
+    Function to retrieve all the Template
+.DESCRIPTION
+    Function to retrieve all the Template
+.PARAMETER ClassID
+    Specifies the management pack class Id
+.PARAMETER Type
+    Specifies the type of item to return (instead of specifying the classid)
+    'ServiceRequest','IncidentRequest','Activity','ChangeRequest'
+.EXAMPLE
+    Get-CiresonPortalTemplate -classid "04b69835-6343-4de2-4b19-6be08c612989"
 
+    Returns all the Service Request Template
+.EXAMPLE
+    Get-CiresonPortalTemplate -Type "ServiceRequest"
+
+    Returns all the Service Request Template
 .NOTES
-    Francois-Xavier	Cat
-    www.lazywinadmin.com
+    Francois-Xavier Cat
+    lazywinadmin.com
     @lazywinadm
     github.com/lazywinadmin
+.LINK
+    https://support.cireson.com/Help/Api/GET-api-V3-Template-GetTemplates_classId
 #>
     [Cmdletbinding(DefaultParameterSetName="All")]
     PARAM(

@@ -1,12 +1,21 @@
 ﻿function Set-CiresonPortalRequestOfferingAsFavorite
 {
 <#
-.SYNOPSYS
+.SYNOPSIS
     Function to set a Request Ofering as Favorite for a specific User
 .DESCRIPTION
     Function to set a Request Ofering as Favorite for a specific User
+.PARAMETER UserID
+    Specifies the User ID (GUID)
+.PARAMETER RequestOfferingId
+    Specifies the Request Offering ID (GUID)
 .EXAMPLE
     Set-CiresonPortalRequestOfferingAsFavorite -RequestOfferingID 4c2e9de8-c70b-c2df-b0d0-a9820391d294 -UserID 7c7e9d78-c70b-c2df-b0d0-a9820391d294
+.NOTES
+    Francois-Xavier Cat
+    lazywinadmin.com
+    @lazywinadm
+    github.com/lazywinadmin
 #>
 #requires -version 3
 [CmdletBinding(SupportsShouldProcess = $True)]

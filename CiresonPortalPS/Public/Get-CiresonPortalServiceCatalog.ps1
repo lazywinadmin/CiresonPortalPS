@@ -5,13 +5,21 @@
     Function to retrieve the Service Catalog for a User
 .DESCRIPTION
     Function to retrieve the Service Catalog for a User
+.PARAMETER UserID
+    Specifies the User ID (GUID)
+.PARAMETER IsScoped
+    Specifies whether the user is scoped
+.PARAMETER IncludeImage
+    Specifies if you want to see the base64 encoded string in the output
+.PARAMETER ServiceOfferingID
+    Specifies the ServiceOfferingID for which you want to see the Service Catalog
 .EXAMPLE
     Get-CiresonPortalServiceCatalog -UserID $User.ID
 .EXAMPLE
     Get-CiresonPortalServiceCatalog -ServiceOfferingID '14b7829f-e8d3-2f95-9d20-b54d3aa93556'
 .NOTES
-    Francois-Xavier	Cat
-    www.lazywinadmin.com
+    Francois-Xavier Cat
+    lazywinadmin.com
     @lazywinadm
     github.com/lazywinadmin
 #>

@@ -1,12 +1,21 @@
 function Get-CiresonPortalUserTierQueue
 {
 <#
-
+.SYNOPSIS
+    Returns a list of Incident Tier Queue Enumerations where the user is a member.
+.DESCRIPTION
+    Returns a list of Incident Tier Queue Enumerations where the user is a member.
+.PARAMETER UserID
+    Specifies the User Id
+.EXAMPLE
+   Get-CiresonPortalUserTierQueue -UserID "030dd483-5d4a-9286-058c-248415b61f7c"
 .NOTES
-    Francois-Xavier	Cat
-    www.lazywinadmin.com
+    Francois-Xavier Cat
+    lazywinadmin.com
     @lazywinadm
     github.com/lazywinadmin
+.LINK
+    https://support.cireson.com/Help/Api/GET-api-V3-User-GetUsersTierQueueEnumerations_id
 #>
     [Cmdletbinding()]
     PARAM(
