@@ -3,11 +3,6 @@ Function Get-CiresonPortalUserSupportGroup
 <#
 .SYNOPSIS
     Retrieve the SupportGroup for a specific type of WorkItem or Activity
-.DESCRIPTION
-    Retrieve the SupportGroup for a specific type of WorkItem or Activity
-.PARAMETER SupportGroupType
-    Specifies the support group type
-    'ServiceRequest' or 'IncidentRequest'
 .EXAMPLE
     Get-CiresonPortalUserSupportGroup -SupportGroupType ServiceRequest
 
@@ -31,11 +26,6 @@ Function Get-CiresonPortalUserSupportGroup
     HasChildren : True
     Ordinal     : 3.0
     EnumNodes   : {}
-.NOTES
-    Francois-Xavier Cat
-    lazywinadmin.com
-    @lazywinadm
-    github.com/lazywinadmin
 #>
 #requires -version 3
 [CmdletBinding()]
@@ -53,7 +43,7 @@ PARAM (
 		CATCH
 		{
 			# Stop the function
-			break
+			Throw "Not Connected to Cireson Portal"
 		}
 	}
 	PROCESS

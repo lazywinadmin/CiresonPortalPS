@@ -43,8 +43,8 @@ function Get-CiresonPortalUserGroup
     IsLocalizationManager          : False
 
 .NOTES
-    Francois-Xavier Cat
-    lazywinadmin.com
+    Francois-Xavier	Cat
+    www.lazywinadmin.com
     @lazywinadm
     github.com/lazywinadmin
 #>
@@ -59,7 +59,7 @@ BEGIN
 		CATCH
 		{
 			# Stop the function
-			break
+			Throw "Not Connected to Cireson Portal"
 		}
 	}
     PROCESS

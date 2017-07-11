@@ -1,20 +1,12 @@
 function Get-CiresonPortalWorkItemClosedByUser
 {
 <#
-.SYNOPSIS
     Returns Closed Grid Work Items for User - GetGridWorkItemsMyClosedRequests
-.DESCRIPTION
-    Returns Closed Grid Work Items for User - GetGridWorkItemsMyClosedRequests
-.PARAMETER UserID
-    The Guid user Id.
-.PARAMETER MaxCount
-    Maximum of entries to return
-.EXAMPLE
+    
     Get-CiresonPortalWorkItemClosedByUser -UserID $TestUserGUID -MaxCount 1
-
-.NOTES
-    Francois-Xavier Cat
-    lazywinadmin.com
+    .NOTES
+    Francois-Xavier	Cat
+    www.lazywinadmin.com
     @lazywinadm
     github.com/lazywinadmin
 #>
@@ -32,7 +24,7 @@ PARAM(
 		CATCH
 		{
 			# Stop the function
-			break
+			Throw "Not Connected to Cireson Portal"
 		}
 	}
 	PROCESS
