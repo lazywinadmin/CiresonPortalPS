@@ -28,7 +28,7 @@ function Get-CiresonPortalUser
     Retrieve all the Analysts
 .NOTES
     Francois-Xavier	Cat
-    www.lazywinadmin.com
+    lazywinadmin.com
     @lazywinadm
     github.com/lazywinadmin
 #>
@@ -59,7 +59,7 @@ function Get-CiresonPortalUser
 		CATCH
 		{
 			# Stop the function
-			break
+			Throw "Not Connected to Cireson Portal"
 		}
 	}
 	PROCESS

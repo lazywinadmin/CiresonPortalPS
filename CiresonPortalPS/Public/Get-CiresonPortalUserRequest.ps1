@@ -26,7 +26,7 @@ function Get-CiresonPortalUserRequest
 		CATCH
 		{
 			# Stop the function
-			break
+			Throw "Not Connected to Cireson Portal"
 		}
 	}
 	PROCESS

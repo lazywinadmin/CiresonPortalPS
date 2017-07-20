@@ -11,7 +11,7 @@ function Get-CiresonPortalUserAnalyst
 
 	Returns all the Analyst accounts
 .NOTES
-	Francois-Xavier Cat
+	Francois-Xavier	Cat
     lazywinadmin.com
     @lazywinadm
     github.com/lazywinadmin

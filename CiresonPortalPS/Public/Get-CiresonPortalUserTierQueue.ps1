@@ -32,7 +32,7 @@ function Get-CiresonPortalUserTierQueue
 		CATCH
 		{
 			# Stop the function
-			break
+			Throw "Not Connected to Cireson Portal"
 		}
 	}
     PROCESS

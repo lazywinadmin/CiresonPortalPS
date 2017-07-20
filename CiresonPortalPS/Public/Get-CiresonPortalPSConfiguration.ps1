@@ -1,24 +1,22 @@
 function Get-CiresonPortalPSConfiguration
 {
 <#
-.SYNOPSIS
-	Function to get your connection configuration to the Cireson Portal API
-
-.DESCRIPTION
-	Function to get your connection configuration to the Cireson Portal API
-	It will verify that the two variables $CiresonPortalURL and $CiresonPortalCred
-	are present.
-
-.EXAMPLE
-	Get-CiresonPortalPSConfiguration
-
-	Retrieve the CiresonPortalPS module configuration
-
-.NOTES
-	Francois-Xavier Cat
-	lazywinadmin.com
-	@lazywinadm
-	github.com/lazywinadmin
+	.SYNOPSIS
+		Function to get your connection configuration to the Cireson Portal API
+	
+	.DESCRIPTION
+		Function to get your connection configuration to the Cireson Portal API
+		It will verify that the two variables $CiresonPortalURL and $CiresonPortalCred
+		are present.
+	
+	.EXAMPLE
+		PS C:\> Get-CiresonPortalPSConfiguration
+	
+	.NOTES
+		Francois-Xavier Cat
+		@lazywinadm
+		lazywinadmin.com
+		github.com/lazywinadmin
 #>
 	#requires -Version 3
 	[CmdletBinding()]
