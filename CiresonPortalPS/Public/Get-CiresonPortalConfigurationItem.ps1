@@ -1,23 +1,20 @@
 function Get-CiresonPortalConfigurationItem
 {
 <#
-.SYNOPSIS
-	Function to retrieve Configuration Item
-
-.DESCRIPTION
-	Function to retrieve Configuration Item
-
-.PARAMETER ItemFilter
-	Specifies the ItemFilter
-.EXAMPLE
-	Get-CiresonPortalConfigurationItem
-
-	Function to retrieve Configuration Item
-.NOTES
-	Francois-Xavier Cat
-	lazywinadmin.com
-	@lazywinadm
-	github.com/lazywinadmin
+	.SYNOPSIS
+		Function to retrieve Configuration Item
+	
+	.DESCRIPTION
+		Function to retrieve Configuration Item
+	
+	.PARAMETER ItemFilter
+		Specifies the ItemFilter
+	
+	.NOTES
+		Francois-Xavier Cat
+		lazywinadmin.com
+		@lazywinadmin
+		github.com/lazywinadmin
 #>
 	#requires -version 3
 	[CmdletBinding()]
@@ -38,7 +35,7 @@ function Get-CiresonPortalConfigurationItem
 		CATCH
 		{
 			# Stop the function
-			break
+			Throw "Not Connected to Cireson Portal"
 		}
 		
 	}

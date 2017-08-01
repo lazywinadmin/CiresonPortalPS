@@ -3,15 +3,11 @@ function Get-CiresonPortalUserSupportGroupMember
 <#
 .SYNOPSIS
     Returns a list of members of a support group enumeration.
-.DESCRIPTION
-    Returns a list of members of a support group enumeration.
-.PARAMETER SupporGroupID
-    Specifies the Suppor Group ID (GUID)
 .EXAMPLE
     Get-CiresonPortalSupportGroupMember -SupporGroupID $ID
 .NOTES
-    Francois-Xavier Cat
-    lazywinadmin.com
+    Francois-Xavier	Cat
+    www.lazywinadmin.com
     @lazywinadm
     github.com/lazywinadmin
 #>
@@ -28,7 +24,7 @@ PARAM(
 		CATCH
 		{
 			# Stop the function
-			break
+			Throw "Not Connected to Cireson Portal"
 		}
 	}
 	PROCESS

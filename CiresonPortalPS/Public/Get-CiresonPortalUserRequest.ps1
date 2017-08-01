@@ -1,20 +1,9 @@
 function Get-CiresonPortalUserRequest
 {
-<#
-.SYNOPSIS
-	function to retrieve requests open by a user
-.DESCRIPTION
-	function to retrieve requests open by a user
-.PARAMETER UserID
-    Specifies the GUID of the user account
-.EXAMPLE
-	Get-CiresonPortalUserRequest -UserID "4c2e9de8-c70b-c2df-b0d0-a9820391d294"
-.NOTES
-    Francois-Xavier Cat
-    lazywinadmin.com
-    @lazywinadm
-    github.com/lazywinadmin
-#>
+    <#
+    .SYNOPSIS
+        function to retrieve the WorkItem
+    #>
     PARAM(
 		[GUID]$UserID)
     BEGIN
@@ -26,7 +15,7 @@ function Get-CiresonPortalUserRequest
 		CATCH
 		{
 			# Stop the function
-			break
+			Throw "Not Connected to Cireson Portal"
 		}
 	}
 	PROCESS
