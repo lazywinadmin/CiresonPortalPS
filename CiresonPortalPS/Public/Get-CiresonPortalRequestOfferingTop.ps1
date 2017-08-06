@@ -39,16 +39,18 @@ PARAM(
 			Throw "Not Connected to Cireson Portal"
 		}
 	}
-    PROCESS
-    {
-        TRY{
-            Write-Verbose -Message $(New-ScriptMessage -Block PROCESS -message 'Build URI')
-            $URI = $CiresonPortalURL,"api/V3/ServiceCatalog/GetTopRequestOffering?userId=$UserID&returnAmount=$ReturnAmount&isScoped=$($IsScoped.tostring().tolower())" -join '/'
-            Write-Verbose -Message $(New-ScriptMessage -Block PROCESS -message 'Query API')
-            (Invoke-RestMethod $URI -Credential $CiresonPortalCred) -as [pscustomobject]
-        }
-        CATCH{
-            $PSCmdlet.ThrowTerminatingError($_)
-        }
+	PROCESS
+	{
+		TRY
+		{
+			Write-Verbose -Message $(New-ScriptMessage -Block PROCESS -message 'Build URI')
+			$URI = $CiresonPortalURL, "api/V3/ServiceCatalog/GetTopRequestOffering?userId=$UserID&returnAmount=$ReturnAmount&isScoped=$($IsScoped.tostring().tolower())" -join '/'
+			Write-Verbose -Message $(New-ScriptMessage -Block PROCESS -message 'Query API')
+			(Invoke-RestMethod $URI -Credential $CiresonPortalCred) -as [pscustomobject]
+		}
+		CATCH
+		{
+			$PSCmdlet.ThrowTerminatingError($_)
+		}
+	}
 }
-
