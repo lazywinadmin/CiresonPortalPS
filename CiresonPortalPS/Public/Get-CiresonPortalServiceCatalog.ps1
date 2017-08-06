@@ -18,7 +18,7 @@
 .EXAMPLE
     Get-CiresonPortalServiceCatalog -ServiceOfferingID '14b7829f-e8d3-2f95-9d20-b54d3aa93556'
 .NOTES
-    Francois-Xavier Cat
+    Francois-Xavier	Cat
     lazywinadmin.com
     @lazywinadm
     github.com/lazywinadmin

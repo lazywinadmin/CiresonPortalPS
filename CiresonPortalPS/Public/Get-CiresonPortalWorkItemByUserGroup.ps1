@@ -40,7 +40,7 @@ PARAM(
 		{
 			# Stop the function
             Write-Error $Error[0]
-			break
+			Throw "Not Connected to Cireson Portal"
 		}
 	}
 	PROCESS
