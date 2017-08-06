@@ -27,7 +27,30 @@ PARAM(
     [int]$ReturnAmount,
     [switch]$IsScoped=$false
 )
-    $URI = $CiresonPortalURL,"api/V3/ServiceCatalog/GetTopRequestOffering?userId=$UserID&returnAmount=$ReturnAmount&isScoped=$($IsScoped.tostring().tolower())" -join '/'
-    (Invoke-RestMethod $URI -Credential $CiresonPortalCred) -as [pscustomobject]
+    BEGIN
+	{
+		TRY{
+			Write-Verbose -Message $(New-ScriptMessage -Block BEGIN -message 'Checking Pre-Requisites')
+			[void](Get-CiresonPortalPSConfiguration -WarningAction Stop)
+		}
+		CATCH
+		{
+			# Stop the function
+			Throw "Not Connected to Cireson Portal"
+		}
+	}
+	PROCESS
+	{
+		TRY
+		{
+			Write-Verbose -Message $(New-ScriptMessage -Block PROCESS -message 'Build URI')
+			$URI = $CiresonPortalURL, "api/V3/ServiceCatalog/GetTopRequestOffering?userId=$UserID&returnAmount=$ReturnAmount&isScoped=$($IsScoped.tostring().tolower())" -join '/'
+			Write-Verbose -Message $(New-ScriptMessage -Block PROCESS -message 'Query API')
+			(Invoke-RestMethod $URI -Credential $CiresonPortalCred) -as [pscustomobject]
+		}
+		CATCH
+		{
+			$PSCmdlet.ThrowTerminatingError($_)
+		}
+	}
 }
-

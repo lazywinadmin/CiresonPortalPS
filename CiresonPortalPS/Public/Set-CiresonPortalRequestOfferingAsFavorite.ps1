@@ -34,8 +34,8 @@ PARAM(
 		CATCH
 		{
 			# Stop the function
-            Write-Error $Error[0]
-			break
+            Write-Error $Error[0]			
+			Throw "Not Connected to Cireson Portal"
 		}
 	}
 	PROCESS

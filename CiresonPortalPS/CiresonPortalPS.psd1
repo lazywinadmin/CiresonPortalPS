@@ -12,7 +12,7 @@
 RootModule = 'CiresonPortalPS.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.0.0.1'
+ModuleVersion = '1.0.0.2'
 
 # ID used to uniquely identify this module
 GUID = 'c05a29ef-b95f-4d9a-8b30-b07bc3158131'
@@ -66,7 +66,7 @@ RequiredAssemblies = @()
 # NestedModules = @()
 
 # Functions to export from this module
-FunctionsToExport = @('Get-CiresonPortalArticle','Get-CiresonPortalConfigurationItem','Get-CiresonPortalEnum','Get-CiresonPortalPSConfiguration','Get-CiresonPortalRequestOffering','Get-CiresonPortalRequestOfferingDetails','Get-CiresonPortalRequestOfferingTop','Get-CiresonPortalServiceCatalog','Get-CiresonPortalTemplate','Get-CiresonPortalUserAnalyst','Get-CiresonPortalUserGroup','Get-CiresonPortalUserPermission','Get-CiresonPortalUserPreference','Get-CiresonPortalUserRequest','Get-CiresonPortalUserSupportGroup','Get-CiresonPortalUserSupportGroupMember','Get-CiresonPortalUserTierQueue','Get-CiresonPortalWorkItem','Get-CiresonPortalWorkItemByUserGroup','Get-CiresonPortalWorkItemClosedByUser','Search-CiresonPortalServiceCatalog','Set-CiresonPortalPSConfiguration','Set-CiresonPortalRequestOfferingAsFavorite','Test-CiresonPortalUserIsAuthorized')
+FunctionsToExport = @('Get-CiresonPortalArticle','Get-CiresonPortalConfigurationItem','Get-CiresonPortalEnum','Get-CiresonPortalPSConfiguration','Get-CiresonPortalRequestOffering','Get-CiresonPortalRequestOfferingDetails','Get-CiresonPortalRequestOfferingTop','Get-CiresonPortalServiceCatalog','Get-CiresonPortalTemplate','Get-CiresonPortalUserAnalyst','Get-CiresonPortalUserGroup','Get-CiresonPortalUserPermission','Get-CiresonPortalUserPreference','Get-CiresonPortalUserRequest','Get-CiresonPortalUserSupportGroup','Get-CiresonPortalUserSupportGroupMember','Get-CiresonPortalUserTierQueue','Get-CiresonPortalWorkItem','Get-CiresonPortalWorkItemByUserGroup','Get-CiresonPortalWorkItemClosedByUser','Search-CiresonPortalServiceCatalog','Set-CiresonPortalPSConfiguration','Set-CiresonPortalRequestOfferingAsFavorite','Test-CiresonPortalUserIsAuthorized','Update-CiresonPortalProjection','Get-CiresonPortalProjection','Get-CiresonPortalEnumDisplayName','Get-CiresonPortalUser','Get-CiresonPortalObjectHistory')
 
 # Cmdlets to export from this module
 # CmdletsToExport = '*'
