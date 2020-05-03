@@ -17,7 +17,7 @@ function Get-CiresonPortalUserSupportGroupMember
 #>
 PARAM(
     [parameter(Mandatory)]
-    $SupporGroupID
+    $SupportGroupID
 )
     BEGIN
 	{
